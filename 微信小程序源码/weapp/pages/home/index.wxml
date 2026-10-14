@@ -1,0 +1,92 @@
+<view class="page">
+  <!-- 设备状态横幅 -->
+  <view class="banner {{online ? 'banner-online' : 'banner-offline'}}">
+    <view class="banner-left">
+      <view class="banner-dot"></view>
+      <text class="banner-title">{{online ? '设备在线' : '设备离线'}}</text>
+    </view>
+    <text class="banner-time">{{lastUpdate === '--' ? '尚未获取数据' : '更新于 ' + lastUpdate}}</text>
+  </view>
+
+  <!-- 错误提示 -->
+  <view class="tip" wx:if="{{error}}">
+    <text class="tip-text">{{error}}</text>
+    <text class="tip-action" bindtap="onRetry">点击重试</text>
+  </view>
+
+  <!-- 传感器数据 -->
+  <view class="grid">
+    <view class="card">
+      <view class="card-head">
+        <view class="card-icon card-icon-temp">温</view>
+        <text class="card-label">温度</text>
+      </view>
+      <view class="card-value card-value-temp">{{snapshot.temperature}}<text class="card-unit">℃</text></view>
+      <view class="card-sub">DHT11 传感器</view>
+    </view>
+
+    <view class="card">
+      <view class="card-head">
+        <view class="card-icon card-icon-humidity">湿</view>
+        <text class="card-label">湿度</text>
+      </view>
+      <view class="card-value card-value-humidity">{{snapshot.humidity}}<text class="card-unit">%RH</text></view>
+      <view class="card-sub">DHT11 传感器</view>
+    </view>
+
+    <view class="card">
+      <view class="card-head">
+        <view class="card-icon card-icon-distance">距</view>
+        <text class="card-label">距离</text>
+      </view>
+      <view class="card-value card-value-distance">{{snapshot.distance}}<text class="card-unit">cm</text></view>
+      <view class="card-sub">HC-SR04 超声波</view>
+    </view>
+
+    <view class="card">
+      <view class="card-head">
+        <view class="card-icon card-icon-light">光</view>
+        <text class="card-label">光照</text>
+      </view>
+      <view class="card-value card-value-light">{{snapshot.lightText}}</view>
+      <view class="card-sub">ADC 值 {{snapshot.lightRaw}}</view>
+    </view>
+  </view>
+
+  <!-- 执行器状态 -->
+  <view class="section">
+    <view class="section-title">执行器状态</view>
+
+    <view class="row">
+      <view class="row-left">
+        <text class="row-label">8 路 LED 灯组</text>
+        <text class="row-desc">开发板 8 颗普通 LED</text>
+      </view>
+      <view class="pill {{snapshot.led8Mode > 0 ? 'pill-on' : 'pill-off'}}">
+        {{led8ModeText}}
+      </view>
+    </view>
+
+    <view class="row">
+      <view class="row-left">
+        <text class="row-label">WS2812B 幻彩灯</text>
+        <text class="row-desc">9 颗可寻址 RGB 灯珠</text>
+      </view>
+      <view class="pill {{snapshot.rgbMode > 0 ? 'pill-on' : 'pill-off'}}">
+        {{rgbModeText}}
+      </view>
+    </view>
+
+    <view class="row row-last">
+      <view class="row-left">
+        <text class="row-label">蜂鸣器</text>
+        <text class="row-desc">距离 / 湿度 / 光照 / 手动报警</text>
+      </view>
+      <view class="pill {{snapshot.buzzerOn ? 'pill-alarm' : 'pill-off'}}">
+        {{snapshot.buzzerOn ? '报警中' : '已关闭'}}
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">下拉可手动刷新·数据来源 OneNET 云端采集数据</view>
+</view>

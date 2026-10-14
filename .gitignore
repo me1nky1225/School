@@ -1,0 +1,12 @@
+# 含个人姓名的原始压缩包，不要上传到仓库
+*.rar
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 微信开发者工具本地私有配置
+project.private.config.json
+
+# 编辑器配置
+.vscode/

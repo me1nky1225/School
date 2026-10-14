@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/control/index",
+    "pages/device/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "环境监测上位机",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f6f7"
+  },
+  "tabBar": {
+    "color": "#86909c",
+    "selectedColor": "#165dff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "监控",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/control/index",
+        "text": "控制",
+        "iconPath": "images/tab-control.png",
+        "selectedIconPath": "images/tab-control-active.png"
+      },
+      {
+        "pagePath": "pages/device/index",
+        "text": "设备",
+        "iconPath": "images/tab-device.png",
+        "selectedIconPath": "images/tab-device-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

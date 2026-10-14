@@ -1,0 +1,184 @@
+.page {
+  min-height: 100vh;
+  padding: 24rpx 24rpx 60rpx;
+  background-color: var(--color-bg-page);
+}
+
+/* 状态横幅 */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 32rpx;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.banner-online {
+  background: linear-gradient(135deg, #2ac864, #00a03a);
+}
+
+.banner-offline {
+  background: linear-gradient(135deg, #9aa3ad, #6e7681);
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+}
+
+.banner-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #ffffff;
+  margin-right: 18rpx;
+  box-shadow: 0 0 0 8rpx rgba(255, 255, 255, 0.25);
+}
+
+.banner-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.banner-time {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* 控制面板 */
+.panel {
+  margin-top: 24rpx;
+  padding: 30rpx 28rpx;
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* 状态标签 */
+.tag {
+  padding: 6rpx 20rpx;
+  border-radius: var(--radius-button);
+  font-size: 22rpx;
+}
+
+.tag-on {
+  background-color: #e8ffea;
+  color: var(--color-online);
+}
+
+.tag-off {
+  background-color: #f2f3f5;
+  color: var(--color-text-tertiary);
+}
+
+/* 模式选择 */
+.modes {
+  display: flex;
+  margin-top: 24rpx;
+  padding: 6rpx;
+  border-radius: var(--radius-md);
+  background-color: #f2f3f5;
+}
+
+.mode {
+  flex: 1;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: var(--color-text-secondary);
+  border-radius: 10rpx;
+}
+
+.mode-active {
+  color: #ffffff;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+}
+
+.panel-tip {
+  margin-top: 14rpx;
+  font-size: 23rpx;
+  line-height: 1.5;
+  color: var(--color-text-tertiary);
+}
+
+.state {
+  margin-top: 22rpx;
+  padding: 18rpx 24rpx;
+  border-radius: var(--radius-md);
+  font-size: 26rpx;
+}
+
+.state-on {
+  background-color: #e8ffea;
+  color: var(--color-online);
+}
+
+.state-off {
+  background-color: #f2f3f5;
+  color: var(--color-text-secondary);
+}
+
+.state-alarm {
+  background-color: #ffece8;
+  color: var(--color-alarm);
+}
+
+/* 操作按钮 */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28rpx;
+}
+
+.btn {
+  font-size: 28rpx;
+  border-radius: var(--radius-button);
+  height: 84rpx;
+  line-height: 84rpx;
+  padding: 0;
+}
+
+.btn-primary {
+  width: 48.8%;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+}
+
+.btn-plain {
+  width: 48.8%;
+  color: var(--color-text-secondary);
+  background-color: #ffffff;
+}
+
+.btn-ghost {
+  margin-top: 24rpx;
+  color: var(--color-primary);
+  background-color: #ffffff;
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+}
+
+.footer {
+  margin-top: 36rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--color-text-tertiary);
+}

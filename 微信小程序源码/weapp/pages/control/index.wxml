@@ -1,0 +1,95 @@
+<view class="page">
+  <!-- 设备状态横幅 -->
+  <view class="banner {{online ? 'banner-online' : 'banner-offline'}}">
+    <view class="banner-left">
+      <view class="banner-dot"></view>
+      <text class="banner-title">{{online ? '已连接设备' : '设备离线'}}</text>
+    </view>
+    <text class="banner-time">{{lastUpdate === '--' ? '尚未获取数据' : '同步于 ' + lastUpdate}}</text>
+  </view>
+
+  <!-- 8 路 LED 灯组 -->
+  <view class="panel">
+    <view class="panel-head">
+      <view class="panel-title">8 路 LED 灯组</view>
+      <view class="tag {{led8Mode > 0 ? 'tag-on' : 'tag-off'}}">{{led8Mode > 0 ? '运行中' : '已关闭'}}</view>
+    </view>
+    <view class="panel-tip">开发板上的 8 颗普通 LED，可独立选择点亮方式</view>
+
+    <view class="modes">
+      <view
+        class="mode {{led8Mode === 0 ? 'mode-active' : ''}}"
+        data-mode="0"
+        data-target="led8"
+        bindtap="onModeTap"
+      >关闭</view>
+      <view
+        class="mode {{led8Mode === 1 ? 'mode-active' : ''}}"
+        data-mode="1"
+        data-target="led8"
+        bindtap="onModeTap"
+      >流水灯</view>
+      <view
+        class="mode {{led8Mode === 2 ? 'mode-active' : ''}}"
+        data-mode="2"
+        data-target="led8"
+        bindtap="onModeTap"
+      >闪烁</view>
+    </view>
+  </view>
+
+  <!-- WS2812B 幻彩灯 -->
+  <view class="panel">
+    <view class="panel-head">
+      <view class="panel-title">WS2812B 幻彩灯</view>
+      <view class="tag {{rgbMode > 0 ? 'tag-on' : 'tag-off'}}">{{rgbMode > 0 ? '运行中' : '已关闭'}}</view>
+    </view>
+    <view class="panel-tip">9 颗可寻址 RGB 灯珠，与 8 路 LED 互不影响</view>
+
+    <view class="modes">
+      <view
+        class="mode {{rgbMode === 0 ? 'mode-active' : ''}}"
+        data-mode="0"
+        data-target="rgb"
+        bindtap="onModeTap"
+      >关闭</view>
+      <view
+        class="mode {{rgbMode === 1 ? 'mode-active' : ''}}"
+        data-mode="1"
+        data-target="rgb"
+        bindtap="onModeTap"
+      >呼吸灯</view>
+      <view
+        class="mode {{rgbMode === 2 ? 'mode-active' : ''}}"
+        data-mode="2"
+        data-target="rgb"
+        bindtap="onModeTap"
+      >跑马灯</view>
+    </view>
+  </view>
+
+  <!-- 蜂鸣器 -->
+  <view class="panel">
+    <view class="panel-head">
+      <view class="panel-title">蜂鸣器</view>
+      <switch
+        checked="{{buzzerOn}}"
+        disabled="{{busy}}"
+        color="#f53f3f"
+        bindchange="onBuzzerChange"
+      />
+    </view>
+    <view class="panel-tip">手动鸣响 2000Hz。距离过近 / 湿度 ≥90% / 光照强也会自动报警，此时开关会显示为「报警中」</view>
+    <view class="state {{buzzerOn ? 'state-alarm' : 'state-off'}}">
+      当前状态：{{buzzerOn ? '报警中' : '已关闭'}}
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="actions">
+    <button class="btn btn-plain" disabled="{{busy}}" bindtap="onAllOff">全部关闭</button>
+    <button class="btn btn-primary" bindtap="onRefresh">同步当前状态</button>
+  </view>
+
+  <view class="footer">下发后需等待 ESP32 上报，状态才会同步</view>
+</view>

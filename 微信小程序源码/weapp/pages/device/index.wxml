@@ -1,0 +1,60 @@
+<view class="page">
+  <!-- 设备信息 -->
+  <view class="panel">
+    <view class="panel-title">设备信息</view>
+
+    <view class="row">
+      <text class="row-label">产品 ID</text>
+      <text class="row-value">{{productId}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">设备名称</text>
+      <text class="row-value">{{deviceName}}</text>
+    </view>
+    <view class="row">
+      <text class="row-label">接入协议</text>
+      <text class="row-value">MQTT / OneJSON</text>
+    </view>
+    <view class="row row-last">
+      <text class="row-label">接口地址</text>
+      <text class="row-value">{{apiBaseUrl}}</text>
+    </view>
+  </view>
+
+  <!-- 刷新间隔 -->
+  <view class="panel">
+    <view class="panel-title">自动刷新间隔</view>
+    <view class="panel-tip">监控页按此间隔轮询 OneNET 获取最新数据</view>
+    <picker
+      mode="selector"
+      range="{{intervalOptions}}"
+      value="{{intervalIndex}}"
+      bindchange="onIntervalChange"
+    >
+      <view class="picker">
+        <text class="picker-value">{{intervalOptions[intervalIndex]}}</text>
+        <text class="picker-arrow">›</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 连接测试 -->
+  <view class="panel">
+    <view class="panel-title">连接测试</view>
+    <view class="panel-tip">向 OneNET 发起一次属性查询，验证 token 与网络是否可用</view>
+    <button class="btn btn-primary" disabled="{{testing}}" bindtap="onTest">
+      {{testing ? '测试中…' : '开始测试'}}
+    </button>
+    <view class="result {{resultOk ? 'result-ok' : 'result-error'}}" wx:if="{{result}}">
+      {{result}}
+    </view>
+  </view>
+
+  <!-- 使用说明 -->
+  <view class="panel">
+    <view class="panel-title">使用说明</view>
+    <view class="desc">1. 在微信公众平台「开发管理 → 服务器域名」中将 iot-api.heclouds.com 加入 request 合法域名；</view>
+    <view class="desc">2. 开发阶段可在开发者工具「详情 → 本地设置」勾选“不校验合法域名”；</view>
+    <view class="desc">3. 设备需保持联网并定期上报数据，否则监控页会显示离线。</view>
+  </view>
+</view>
